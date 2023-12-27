@@ -10,8 +10,10 @@ function Sidebar() {
         <img src={blogImg} alt="blog image" />
         <p>
           {" "}
-          Laboris sunt aute cupidatat velit magna velit ullamco dolore mollit
-          amet ex esse.Sunt eu ut nostrud id quis proident.
+          Explore a diverse range of topics, from the latest trends and
+          technology to lifestyle tips and thought-provoking perspectives. Join
+          our community of curious minds as we embark on a journey through the
+          realms of knowledge, inspiration, and entertainment.
         </p>
       </div>
       <div className="sidebarItem">
