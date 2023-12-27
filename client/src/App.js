@@ -3,12 +3,13 @@ import { Routes, Route } from "react-router-dom";
 import Topbar from "./components/topbar/Topbar";
 import Single from "./pages/single/Single";
 import Write from "./pages/write/Write";
+import Settings from "./pages/settings/Settings";
 
 function App() {
   return (
     <div className="App">
       <Topbar />
-      <Write/>
+      <Settings/>
     </div>
   );
 }
