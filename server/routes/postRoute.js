@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
 const Post = require("../models/Post");
 
 //create post
@@ -44,21 +43,22 @@ router.put("/upost/:id", async (req, res) => {
 //delete post
 router.delete("/dpost/:id", async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id);
+    const postId = req.params.id;
+    const post = await Post.findOneAndDelete({ _id: postId });
+
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
     if (post.username === req.body.username) {
-      try {
-        await post.delete();
-        return res.status(200).json({ message: "Post has been deleted..." });
-      } catch (error) {
-        return res.status(500).json({ error });
-      }
+      return res.status(200).json({ message: "Post has been deleted..." });
     } else {
       return res
         .status(401)
         .json({ message: "You can delete only your post!" });
     }
   } catch (error) {
-    return res.status(500).json({ error });
+    return res.status(500).json({ error: error.message });
   }
 });
 
@@ -73,7 +73,7 @@ router.get("/getpost/:id", async (req, res) => {
 });
 
 //get all posts
-router.get("/getallpost/", async (req, res) => {
+router.get("/getallpost", async (req, res) => {
   const username = req.query.user;
   const catName = req.query.cat;
   try {
