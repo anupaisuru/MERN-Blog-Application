@@ -4,7 +4,7 @@ const User = require("../models/User");
 const Post = require("../models/Post");
 
 //create post
-router.post("cpost", async (req, res) => {
+router.post("/cpost", async (req, res) => {
   const newPost = new Post(req.body);
   try {
     const savedPost = await newPost.save();
@@ -15,7 +15,7 @@ router.post("cpost", async (req, res) => {
 });
 
 //update post
-router.put("upost/:id", async (req, res) => {
+router.put("/upost/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     if (post.username === req.body.username) {
@@ -42,7 +42,7 @@ router.put("upost/:id", async (req, res) => {
 });
 
 //delete post
-router.delete("dpost/:id", async (req, res) => {
+router.delete("/dpost/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     if (post.username === req.body.username) {
@@ -63,7 +63,7 @@ router.delete("dpost/:id", async (req, res) => {
 });
 
 //get post
-router.get("getpost/:id", async (req, res) => {
+router.get("/getpost/:id", async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     return res.status(200).json({ post });
@@ -73,7 +73,7 @@ router.get("getpost/:id", async (req, res) => {
 });
 
 //get all posts
-router.get("getallpost/", async (req, res) => {
+router.get("/getallpost/", async (req, res) => {
   const username = req.query.user;
   const catName = req.query.cat;
   try {
