@@ -3,6 +3,7 @@ const dotenv = require("dotenv").config();
 const mongoose = require("mongoose");
 const cors = require("cors");
 
+//app middleware
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -11,11 +12,13 @@ app.use(cors());
 const authRoute = require("./routes/authRoute");
 const userRoute = require("./routes/userRoute");
 const postRoute = require("./routes/postRoute");
+const categoryRoute = require("./routes/categoryRoute");
 
 //routes
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 app.use("/api/post", postRoute);
+app.use("/api/cat", categoryRoute);
 
 app.listen(process.env.PORT, () => {
   console.log(`app is running on ${process.env.PORT}`);
