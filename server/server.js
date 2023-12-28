@@ -8,8 +8,10 @@ app.use(express.json());
 app.use(cors());
 
 //import routes
+const authRoute = require("./routes/authRoute");
 
 //routes
+app.use("/api/auth", authRoute);
 
 app.listen(process.env.PORT, () => {
   console.log(`app is running on ${process.env.PORT}`);
