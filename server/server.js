@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv").config();
 const mongoose = require("mongoose");
 const cors = require("cors");
+const multer = require("multer");
 
 //app middleware
 const app = express();
@@ -32,3 +33,18 @@ mongoose
   .catch((error) => {
     console.log("connection error", error);
   });
+
+//set path for upload post images
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "images");
+  },
+  filename: (req, file, cb) => {
+    cb(null, req.body.name);
+  },
+});
+
+const upload = multer({ storage: storage });
+app.post("/api/upload", upload.single("file"), (req, res) => {
+  res.status(200).json({ message: "file has been uploaded" });
+});
