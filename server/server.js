@@ -2,12 +2,13 @@ const express = require("express");
 const dotenv = require("dotenv").config();
 const mongoose = require("mongoose");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 const multer = require("multer");
 
 //app middleware
 const app = express();
-app.use(express.json());
 app.use(cors());
+app.use(bodyParser.json());
 
 //import routes
 const authRoute = require("./routes/authRoute");

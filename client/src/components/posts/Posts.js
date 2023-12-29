@@ -1,17 +1,13 @@
-import React from 'react'
-import "./Posts.css"
-import Post from '../post/Post'
+import React from "react";
+import "./Posts.css";
+import Post from "../post/Post";
 
 function Posts() {
   return (
-    <div className='posts'>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      </div>
-  )
+    <div className="posts">
+      <Post />
+    </div>
+  );
 }
 
-export default Posts
+export default Posts;
